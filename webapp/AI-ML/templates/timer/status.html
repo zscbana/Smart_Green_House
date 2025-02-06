@@ -1,0 +1,30 @@
+{% extends "main/base.html" %}
+{% load crispy_forms_tags %}
+{% block content %}
+<div class="content-section">
+  <div class="media">
+    <img class="rounded-circle account-img" src="{{ user.profile.image.url }}" alt="User Image" />
+    <div class="media-body">
+      <h2 class="account-heading">{{ user.username }}</h2>
+      <p class="text-secondary">{{ user.email }}</p>
+    </div>
+  </div>
+
+  <h3 class="mt-4">Study Time Statistics</h3>
+  <div class="statistics">
+    <p><strong>This day:</strong> {{ daily_time }}h, {{ daily_minutes }}m</p>
+    <p><strong>This week:</strong> {{ weekly_time }}h, {{ weekly_minutes }}m</p>
+    <p><strong>This month:</strong> {{ monthly_time }}h, {{ monthly_minutes }}m</p>
+  </div>
+</div>
+
+<style>
+  .statistics p {
+      background: #f8f9fa;
+      padding: 10px;
+      border-radius: 5px;
+      margin: 10px 0;
+      border: 1px solid #ddd;
+  }
+</style>
+{% endblock content %}
