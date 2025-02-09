@@ -1,0 +1,161 @@
+/* General styles for the entire body */
+body {
+    background: #fafafa;
+    color: #333333;
+    margin-top: 5rem;
+    font-family: Arial, sans-serif;
+}
+
+/* Heading styles */
+h1, h2, h3, h4, h5, h6 {
+    color: #444444;
+}
+
+/* Unordered list styles */
+ul {
+    margin: 0;
+}
+
+/* Navbar background */
+.bg-steel {
+    background-color: #000000;
+}
+
+/* Navbar link colors */
+.site-header .navbar-nav .nav-link {
+    color: #cbd5db;
+}
+
+.site-header .navbar-nav .nav-link:hover {
+    color: #ffffff;
+}
+
+.site-header .navbar-nav .nav-link.active {
+    font-weight: 500;
+}
+
+/* Content section */
+.content-section {
+    background: #ffffff;
+    padding: 10px 20px;
+    border: 1px solid #dddddd;
+    border-radius: 3px;
+    margin-bottom: 20px;
+}
+
+/* Article styles */
+.article-title {
+    color: #444444;
+}
+
+a.article-title:hover {
+    color: #428bca;
+    text-decoration: none;
+}
+
+.article-content {
+    white-space: pre-line;
+}
+
+/* Article image styles */
+.article-img {
+    height: 65px;
+    width: 65px;
+    margin-right: 16px;
+}
+
+/* Article metadata */
+.article-metadata {
+    padding-bottom: 1px;
+    margin-bottom: 4px;
+    border-bottom: 1px solid #e3e3e3;
+}
+
+.article-metadata a:hover {
+    color: #333;
+    text-decoration: none;
+}
+
+/* Article SVG */
+.article-svg {
+    width: 25px;
+    height: 25px;
+    vertical-align: middle;
+}
+
+/* Account image styles */
+.account-img {
+    height: 125px;
+    width: 125px;
+    margin-right: 20px;
+    margin-bottom: 16px;
+}
+
+.account-heading {
+    font-size: 2.5rem;
+}
+
+.main {
+    text-align: center;
+    padding: 50px 0;
+}
+
+.main h2 {
+    font-size: 2.5rem;
+    margin-bottom: 20px;
+}
+
+.section-title {
+    text-align: center;
+    margin-bottom: 40px;
+}
+
+.section-title h2 {
+    font-size: 2rem;
+    margin-bottom: 10px;
+}
+
+.section-title p {
+    font-size: 1.2rem;
+    color: #555;
+}
+
+.track-item {
+    background-color: #f8f9fa;
+    border: 1px solid #dee2e6;
+    border-radius: 0.5rem;
+    padding: 20px;
+    text-align: center;
+    transition: transform 0.3s;
+}
+
+.track-item:hover {
+    transform: scale(1.05);
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+}
+
+.track-item .icon {
+    font-size: 2rem;
+    margin-bottom: 15px;
+    color: #007bff; /* Bootstrap primary color */
+}
+
+.track-item h4 {
+    font-size: 1.5rem;
+    margin-bottom: 10px;
+}
+
+.track-item p {
+    color: #777;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .main h2 {
+        font-size: 2rem;
+    }
+
+    .section-title h2 {
+        font-size: 1.5rem;
+    }
+}
