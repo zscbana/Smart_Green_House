@@ -1,0 +1,13 @@
+{
+  "version": "0.2.0",
+  "configurations": [
+    {
+      "name": "C/C++ Runner: Debug Session",
+      "type": "lldb",
+      "request": "launch",
+      "args": [],
+      "cwd": "/Users/omarelbanna/Documents/ModernAcademy/Smart_Green_House/Embedded/sensors",
+      "program": "/Users/omarelbanna/Documents/ModernAcademy/Smart_Green_House/Embedded/sensors/build/Debug/outDebug"
+    }
+  ]
+}
