@@ -175,3 +175,60 @@ a.article-title:hover {
     width: 100%;
     height: 100%;
 }
+
+/* Add to your CSS file */
+.hero-section {
+    text-align: center;
+    padding: 4rem 1rem;
+}
+
+.track-item {
+    background: #ffffff;
+    border: none;
+    padding: 2rem;
+    margin: 1rem;
+    border-radius: 15px;
+}
+
+.icon i {
+    font-size: 2.5rem;
+    color: #2e7d32;
+    transition: transform 0.3s ease;
+}
+
+.track-item:hover .icon i {
+    transform: rotate(15deg) scale(1.2);
+}
+
+.section-title {
+    padding: 3rem 0;
+    background: #f8fff8;
+}
+
+.section-subtitle {
+    font-size: 1.1rem;
+    color: #666;
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+.hero-text {
+    font-size: 1.2rem;
+    color: #444;
+    margin-top: 1.5rem;
+    font-weight: 500;
+}
+
+@media (max-width: 768px) {
+    .greenhouse-img {
+        width: 95%;
+    }
+    
+    .hero-title {
+        font-size: 2rem;
+    }
+    
+    .section-title h2 {
+        font-size: 1.8rem;
+    }
+}

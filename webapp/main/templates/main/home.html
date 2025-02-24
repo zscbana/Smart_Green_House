@@ -1,17 +1,133 @@
 {% extends "main/base.html" %}
 
 {% block content %}
-<div class="container mt-4">
-    <div class="grafana-embed">
-        <!-- Grafana Dashboard Embed -->
-        <iframe 
-            src="Update me in case of proaction" 
-            frameborder="0" 
-            width="100%" 
-            height="800"
-            style="border: 1px solid #ddd; border-radius: 8px;"
-            allowfullscreen>
-        </iframe>
+<div class="main">
+    <div class="hero-section">
+        <h1 class="hero-title">Smart Greenhouse Ecosystem</h1>
+        <div class="hero-content">
+            <img src="/static/main/images/Green2.jpg" alt="Greenhouse Image" class="greenhouse-img">
+            <p class="hero-text">Revolutionizing agriculture through IoT and machine learning</p>
+        </div>
     </div>
 </div>
+
+<section class="features">
+    <div class="section-title">
+        <h2>Intelligent Features</h2>
+        <p class="section-subtitle">Automated solutions for precision farming</p>
+    </div>
+    <div class="track-container">
+        <div class="track-item">
+            <div class="icon"><i class="fas fa-thermometer-half"></i></div>
+            <h4>Climate Control</h4>
+            <p>24/7 temperature monitoring with automated adjustments</p>
+        </div>
+        <div class="track-item">
+            <div class="icon"><i class="fas fa-tint"></i></div>
+            <h4>Smart Irrigation</h4>
+            <p>AI-powered water optimization system</p>
+        </div>
+        <div class="track-item">
+            <div class="icon"><i class="fas fa-chart-line"></i></div>
+            <h4>Advanced Analytics</h4>
+            <p>Interactive dashboards with historical data</p>
+        </div>
+        <div class="track-item">
+            <div class="icon"><i class="fas fa-seedling"></i></div>
+            <h4>Crop Health AI</h4>
+            <p>Deep learning-based disease prediction</p>
+        </div>
+    </div>
+</section>
+
+<style>
+    .hero-section {
+        padding: 4rem 2rem;
+        background: linear-gradient(to right, #f8fff8, #ffffff);
+        border-radius: 20px;
+        margin: 2rem auto;
+        max-width: 1200px;
+    }
+
+    .greenhouse-img {
+        width: 80%;
+        max-width: 800px;
+        border-radius: 15px;
+        box-shadow: 0 10px 30px rgba(0,80,0,0.1);
+        transition: transform 0.3s ease;
+    }
+
+    .track-container {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        gap: 2rem;
+        padding: 0 2rem;
+        max-width: 1200px;
+        margin: 0 auto;
+    }
+
+    .track-item {
+        background: white;
+        padding: 2rem;
+        border-radius: 15px;
+        box-shadow: 0 5px 15px rgba(0,0,0,0.08);
+        transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    .track-item:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 12px 25px rgba(0,80,0,0.1);
+    }
+
+    .icon {
+        font-size: 2.5rem;
+        color: #2e7d32;
+        margin-bottom: 1rem;
+    }
+
+    .hero-title {
+        font-size: 2.8rem;
+        color: #1b5e20;
+        margin-bottom: 1.5rem;
+        font-weight: 600;
+    }
+
+    .section-title h2 {
+        font-size: 2.4rem;
+        color: #1b5e20;
+        margin-bottom: 1rem;
+    }
+
+    @media (max-width: 768px) {
+        .hero-title {
+            font-size: 2rem;
+        }
+        
+        .track-container {
+            grid-template-columns: 1fr;
+            padding: 0 1rem;
+        }
+    }
+</style>
+
+<script>
+    document.addEventListener("DOMContentLoaded", function() {
+        // Add intersection observer for scroll animations
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = 1;
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        });
+
+        document.querySelectorAll('.track-item').forEach((item) => {
+            item.style.opacity = 0;
+            item.style.transform = 'translateY(20px)';
+            item.style.transition = 'all 0.6s ease-out';
+            observer.observe(item);
+        });
+    });
+</script>
 {% endblock content %}

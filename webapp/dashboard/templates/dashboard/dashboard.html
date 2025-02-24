@@ -1,0 +1,196 @@
+{% extends "main/base.html" %}
+
+{% block content %}
+<section class="dashboard-container">
+    <div class="dashboard-hero">
+        <h1 class="dashboard-title">Environmental Monitoring</h1>
+        <p class="dashboard-subtitle">Real-time agricultural analytics dashboard</p>
+    </div>
+
+    <div class="sensor-controls">
+        <h3 class="control-title">Sensor Interfaces</h3>
+        <div class="sensor-grid">
+            <a href="{% url 'soil_moisture' %}" class="sensor-card moisture-card">
+                <i class="fas fa-tint sensor-icon"></i>
+                <div class="sensor-info">
+                    <h4>Soil Moisture</h4>
+                    <p>Current hydration levels</p>
+                </div>
+            </a>
+            <a href="{% url 'temperature' %}" class="sensor-card temp-card">
+                <i class="fas fa-thermometer-half sensor-icon"></i>
+                <div class="sensor-info">
+                    <h4>Temperature</h4>
+                    <p>Climate control metrics</p>
+                </div>
+            </a>
+            <a href="{% url 'humidity' %}" class="sensor-card humidity-card">
+                <i class="fas fa-cloud sensor-icon"></i>
+                <div class="sensor-info">
+                    <h4>Humidity</h4>
+                    <p>Air moisture analysis</p>
+                </div>
+            </a>
+        </div>
+    </div>
+
+    <div class="grafana-container">
+        <h3 class="viz-title">Live Data Visualization</h3>
+        <div class="grafana-embed">
+            <iframe 
+                src="http://192.168.1.2:3001/public-dashboards/6d5a68146d6c4beeba405ab8b52dde3a" 
+                frameborder="0"
+                allowfullscreen>
+            </iframe>
+        </div>
+    </div>
+</section>
+
+<style>
+    .dashboard-container {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 2rem;
+    }
+
+    .dashboard-hero {
+        text-align: center;
+        margin-bottom: 3rem;
+        padding: 2rem;
+        background: linear-gradient(to right, #f0faf0, #ffffff);
+        border-radius: 15px;
+    }
+
+    .dashboard-title {
+        font-size: 2.5rem;
+        color: #1b5e20;
+        margin-bottom: 0.5rem;
+    }
+
+    .dashboard-subtitle {
+        color: #666;
+        font-size: 1.1rem;
+    }
+
+    .sensor-controls {
+        margin-bottom: 3rem;
+    }
+
+    .control-title {
+        font-size: 1.8rem;
+        color: #1b5e20;
+        margin-bottom: 1.5rem;
+        text-align: center;
+    }
+
+    .sensor-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+        gap: 1.5rem;
+        margin: 0 auto;
+    }
+
+    .sensor-card {
+        display: flex;
+        align-items: center;
+        padding: 1.5rem;
+        border-radius: 12px;
+        background: white;
+        box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+        transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        text-decoration: none;
+        color: inherit;
+    }
+
+    .sensor-card:hover {
+        transform: translateY(-3px);
+        box-shadow: 0 8px 20px rgba(0,80,0,0.12);
+    }
+
+    .moisture-card { border-left: 4px solid #2196F3; }
+    .temp-card { border-left: 4px solid #f44336; }
+    .humidity-card { border-left: 4px solid #4CAF50; }
+
+    .sensor-icon {
+        font-size: 2rem;
+        margin-right: 1.5rem;
+        width: 40px;
+        text-align: center;
+    }
+
+    .sensor-info h4 {
+        margin-bottom: 0.3rem;
+        color: #333;
+    }
+
+    .sensor-info p {
+        color: #666;
+        font-size: 0.9rem;
+        margin: 0;
+    }
+
+    .grafana-container {
+        background: white;
+        padding: 2rem;
+        border-radius: 15px;
+        box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+        margin-top: 2rem;
+    }
+
+    .viz-title {
+        font-size: 1.5rem;
+        color: #1b5e20;
+        margin-bottom: 1.5rem;
+        text-align: center;
+    }
+
+    .grafana-embed {
+        position: relative;
+        padding-bottom: 56.25%;
+        height: 0;
+        overflow: hidden;
+        border-radius: 8px;
+        background: #f8f8f8;
+        border: 1px solid #eee;
+    }
+
+    .grafana-embed iframe {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        border: none;
+    }
+
+    @media (max-width: 768px) {
+        .dashboard-title {
+            font-size: 2rem;
+        }
+        
+        .sensor-grid {
+            grid-template-columns: 1fr;
+        }
+        
+        .grafana-container {
+            padding: 1rem;
+        }
+    }
+</style>
+
+<script>
+    document.addEventListener("DOMContentLoaded", function() {
+        // Add animation to dashboard elements
+        const cards = document.querySelectorAll('.sensor-card');
+        cards.forEach((card, index) => {
+            card.style.opacity = '0';
+            card.style.transform = 'translateY(20px)';
+            card.style.transition = `all 0.6s ease-out ${index * 0.1}s`;
+            setTimeout(() => {
+                card.style.opacity = '1';
+                card.style.transform = 'translateY(0)';
+            }, 100);
+        });
+    });
+</script>
+{% endblock content %}

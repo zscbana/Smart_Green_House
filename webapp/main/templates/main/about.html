@@ -1,4 +1,281 @@
 {% extends "main/base.html" %}
+
 {% block content %}
-    <h1> GreenHouse </h1>
+<section class="about-section">
+    <div class="about-header">
+        <div class="header-content">
+            <h1 class="about-title">Cultivating the Future of Agriculture</h1>
+            <p class="about-subtitle">Smart Solutions for Sustainable Growth</p>
+        </div>
+        <img src="/static/main/images/Green2.jpg" alt="Greenhouse interior" class="about-header-img">
+    </div>
+
+    <div class="mission-statement">
+        <div class="mission-content">
+            <h2>Our Mission</h2>
+            <p class="mission-text">
+                At GreenHouse Innovations, we're revolutionizing traditional farming through IoT technology 
+                and machine learning. Our smart ecosystem optimizes plant growth while reducing resource 
+                consumption by up to 40%.
+            </p>
+            <div class="stats-grid">
+                <div class="stat-item">
+                    <div class="stat-value">5000+</div>
+                    <div class="stat-label">Plants Monitored</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-value">85%</div>
+                    <div class="stat-label">Water Saved</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-value">24/7</div>
+                    <div class="stat-label">Automation</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="technology-showcase">
+        <h2>Core Technologies</h2>
+        <div class="tech-grid">
+            <div class="tech-card">
+                <i class="fas fa-microchip tech-icon"></i>
+                <h3>IoT Sensors Network</h3>
+                <p>Real-time environmental monitoring with precision sensors</p>
+            </div>
+            <div class="tech-card">
+                <i class="fas fa-brain tech-icon"></i>
+                <h3>AI Analytics</h3>
+                <p>Predictive algorithms for crop optimization</p>
+            </div>
+            <div class="tech-card">
+                <i class="fas fa-tint tech-icon"></i>
+                <h3>Smart Irrigation</h3>
+                <p>Water distribution based on plant needs</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="team-section">
+        <h2>Our Team</h2>
+        <div class="team-grid">
+            <div class="team-member">
+                <img src="/static/main/images/OmarElbanna.JPG" alt="Team member" class="member-photo">
+                <h4>Omar Elbanna</h4>
+                <p>Cloud & DevOps Engineer </p>
+            </div>
+            <div class="team-member">
+                <img src="/static/main/images/team2.jpg" alt="Team member" class="member-photo">
+                <h4>AboBakr Ahmed</h4>
+                <p>IoT Systems Architect</p>
+            </div>
+            <div class="team-member">
+                <img src="/static/main/images/team3.jpg" alt="Team member" class="member-photo">
+                <h4>Omar Hesham</h4>
+                <p>AI Development Lead</p>
+            </div>
+            <div class="team-member">
+                <img src="/static/main/images/team3.jpg" alt="Team member" class="member-photo">
+                <h4>Yousef Ramdan</h4>
+                <p>AI Development Lead</p>
+            </div>
+            <div class="team-member">
+                <img src="/static/main/images/team3.jpg" alt="Team member" class="member-photo">
+                <h4>Yousef Abdelnaser</h4>
+                <p>AI Development Lead</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<style>
+    .about-section {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 2rem;
+    }
+
+    .about-header {
+        position: relative;
+        border-radius: 20px;
+        overflow: hidden;
+        margin-bottom: 4rem;
+    }
+
+    .about-header-img {
+        width: 100%;
+        height: 400px;
+        object-fit: cover;
+        filter: brightness(0.9);
+    }
+
+    .header-content {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        text-align: center;
+        color: white;
+        z-index: 2;
+    }
+
+    .about-title {
+        font-size: 2.8rem;
+        margin-bottom: 1rem;
+        text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+    }
+
+    .about-subtitle {
+        font-size: 1.4rem;
+        font-weight: 300;
+    }
+
+    .mission-statement {
+        background: #f8fff8;
+        padding: 4rem 2rem;
+        border-radius: 20px;
+        margin: 3rem 0;
+    }
+
+    .mission-text {
+        font-size: 1.1rem;
+        line-height: 1.8;
+        max-width: 800px;
+        margin: 0 auto 2rem;
+        color: #444;
+    }
+
+    .stats-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+        gap: 2rem;
+        max-width: 800px;
+        margin: 0 auto;
+    }
+
+    .stat-item {
+        text-align: center;
+        padding: 1.5rem;
+        background: white;
+        border-radius: 10px;
+        box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+    }
+
+    .stat-value {
+        font-size: 2rem;
+        font-weight: 700;
+        color: #2e7d32;
+        margin-bottom: 0.5rem;
+    }
+
+    .stat-label {
+        color: #666;
+        font-size: 0.9rem;
+    }
+
+    .technology-showcase {
+        margin: 4rem 0;
+    }
+
+    .tech-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        gap: 2rem;
+        margin-top: 2rem;
+    }
+
+    .tech-card {
+        padding: 2rem;
+        background: white;
+        border-radius: 15px;
+        text-align: center;
+        transition: transform 0.3s ease;
+    }
+
+    .tech-card:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 8px 20px rgba(0,80,0,0.1);
+    }
+
+    .tech-icon {
+        font-size: 2.5rem;
+        color: #2e7d32;
+        margin-bottom: 1rem;
+    }
+
+    .team-section {
+        margin: 4rem 0;
+    }
+
+    .team-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+        gap: 2rem;
+        margin-top: 2rem;
+    }
+
+    .team-member {
+        text-align: center;
+        padding: 1.5rem;
+    }
+
+    .member-photo {
+        width: 150px;
+        height: 150px;
+        border-radius: 50%;
+        object-fit: cover;
+        margin-bottom: 1rem;
+        border: 4px solid #2e7d32;
+    }
+
+    @media (max-width: 768px) {
+        .about-title {
+            font-size: 2rem;
+        }
+
+        .about-subtitle {
+            font-size: 1.1rem;
+        }
+
+        .mission-text {
+            padding: 0 1rem;
+        }
+
+        .tech-grid {
+            grid-template-columns: 1fr;
+        }
+    }
+</style>
+
+<script>
+    document.addEventListener("DOMContentLoaded", function() {
+        // Animation for stats counter
+        const counters = document.querySelectorAll('.stat-value');
+        const animationDuration = 2000;
+
+        counters.forEach(counter => {
+            const animate = () => {
+                const target = +counter.getAttribute('data-target');
+                const start = 0;
+                const duration = animationDuration;
+                let startTime = null;
+
+                const animation = (currentTime) => {
+                    if (!startTime) startTime = currentTime;
+                    const progress = currentTime - startTime;
+                    const percentage = Math.min(progress / duration, 1);
+                    counter.textContent = Math.floor(percentage * target);
+                    
+                    if (percentage < 1) {
+                        requestAnimationFrame(animation);
+                    }
+                };
+
+                requestAnimationFrame(animation);
+            };
+
+            animate();
+        });
+    });
+</script>
 {% endblock content %}

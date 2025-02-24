@@ -1,0 +1,30 @@
+{% extends "main/base.html" %}
+
+{% block content %}
+<section class="sensor-container">
+    <div class="sensor-header" style="background: linear-gradient(135deg, #ffebee 0%, #fff8f8 100%);">
+        <div class="header-content">
+            <i class="fas fa-thermometer-half sensor-main-icon" style="color: #f44336;"></i>
+            <h1 style="color: #b71c1c;">Thermal Analytics</h1>
+            <p class="sensor-subtitle">Environmental Temperature Monitoring</p>
+        </div>
+    </div>
+
+    <div class="sensor-viz-container">
+        <div class="viz-header">
+            <h2 style="color: #c62828;">Live Temperature Data</h2>
+            <div class="status-indicator temp-status">
+                <i class="fas fa-circle"></i>
+                <span>Real-time Updates</span>
+            </div>
+        </div>
+        
+        <div class="grafana-embed">
+            <iframe 
+                src="http://192.168.1.2:3001/public-dashboards/ed2870687a6c4f7d9f7d6c09e2886644" 
+                allowfullscreen>
+            </iframe>
+        </div>
+    </div>
+</section>
+{% endblock content %}

@@ -1,0 +1,30 @@
+{% extends "main/base.html" %}
+
+{% block content %}
+<section class="sensor-container">
+    <div class="sensor-header" style="background: linear-gradient(135deg, #e8f5e9 0%, #f8fff8 100%);">
+        <div class="header-content">
+            <i class="fas fa-tint sensor-main-icon" style="color: #4CAF50;"></i>
+            <h1 style="color: #2E7D32;">Soil Analytics</h1>
+            <p class="sensor-subtitle">Subsurface Hydration Monitoring</p>
+        </div>
+    </div>
+
+    <div class="sensor-viz-container">
+        <div class="viz-header">
+            <h2 style="color: #1B5E20;">Live Moisture Data</h2>
+            <div class="status-indicator moisture-status">
+                <i class="fas fa-circle"></i>
+                <span>Real-time Updates</span>
+            </div>
+        </div>
+        
+        <div class="grafana-embed">
+            <iframe 
+                src="http://192.168.1.2:3001/public-dashboards/d658878ebbe84e8a95bf837c9d833106" 
+                allowfullscreen>
+            </iframe>
+        </div>
+    </div>
+</section>
+{% endblock content %}

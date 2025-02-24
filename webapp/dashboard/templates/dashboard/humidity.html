@@ -1,0 +1,139 @@
+{% extends "main/base.html" %}
+
+{% block content %}
+<section class="sensor-container">
+    <div class="sensor-header">
+        <div class="header-content">
+            <i class="fas fa-cloud-rain sensor-main-icon"></i>
+            <h1>Humidity Analytics</h1>
+            <p class="sensor-subtitle">Atmospheric Moisture Monitoring</p>
+        </div>
+    </div>
+
+    <div class="sensor-viz-container">
+        <div class="viz-header">
+            <h2>Live Humidity Data</h2>
+            <div class="status-indicator humidity-status">
+                <i class="fas fa-circle"></i>
+                <span>Real-time Updates</span>
+            </div>
+        </div>
+        
+        <div class="grafana-embed">
+            <iframe 
+                src="http://192.168.1.2:3001/public-dashboards/d4700fda2c084a13a782f8d4440d88ac" 
+                allowfullscreen>
+            </iframe>
+        </div>
+    </div>
+</section>
+
+<style>
+    .sensor-container {
+        max-width: 1200px;
+        margin: 2rem auto;
+        padding: 0 1rem;
+    }
+
+    .sensor-header {
+        text-align: center;
+        padding: 4rem 1rem;
+        background: linear-gradient(135deg, #e3f2fd 0%, #f8fdff 100%);
+        border-radius: 15px;
+        margin-bottom: 2rem;
+    }
+
+    .sensor-main-icon {
+        font-size: 3.5rem;
+        color: #2196F3;
+        margin-bottom: 1rem;
+    }
+
+    .sensor-header h1 {
+        font-size: 2.5rem;
+        color: #1565C0;
+        margin-bottom: 0.5rem;
+    }
+
+    .sensor-subtitle {
+        color: #607D8B;
+        font-size: 1.1rem;
+    }
+
+    .sensor-viz-container {
+        background: white;
+        border-radius: 15px;
+        box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+        padding: 2rem;
+    }
+
+    .viz-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 1.5rem;
+    }
+
+    .viz-header h2 {
+        font-size: 1.5rem;
+        color: #1A237E;
+    }
+
+    .status-indicator {
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+        font-size: 0.9rem;
+    }
+
+    .status-indicator i {
+        font-size: 0.6rem;
+        animation: pulse 1.5s infinite;
+    }
+
+    .humidity-status i { color: #2196F3; }
+    .moisture-status i { color: #4CAF50; }
+    .temp-status i { color: #f44336; }
+
+    @keyframes pulse {
+        0% { opacity: 1; }
+        50% { opacity: 0.3; }
+        100% { opacity: 1; }
+    }
+
+    .grafana-embed {
+        position: relative;
+        padding-bottom: 70%;
+        height: 0;
+        border-radius: 10px;
+        overflow: hidden;
+        background: #f8f9fa;
+        border: 1px solid #e3e9ef;
+    }
+
+    .grafana-embed iframe {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        border: none;
+    }
+
+    @media (max-width: 768px) {
+        .sensor-header {
+            padding: 2rem 1rem;
+        }
+        
+        .sensor-header h1 {
+            font-size: 2rem;
+        }
+        
+        .viz-header {
+            flex-direction: column;
+            align-items: flex-start;
+            gap: 1rem;
+        }
+    }
+</style>
+{% endblock content %}
