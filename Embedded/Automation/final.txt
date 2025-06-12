@@ -1,0 +1,85 @@
+#include <DHT.h>
+
+#define DHTPIN 3         // رقم PIN المتصل بحساس DHT11
+#define DHTTYPE DHT11    // نوع الحساس
+#define SENSOR_PIN 2     // رقم PIN لمستشعر الضوء
+#define GATE_PIN 9       // رقم PIN للبوابة (Gate) للترانزستور
+#define LED_PIN 13       // رقم PIN للـ LED
+#define FAN_PIN1 10      // رقم PIN للمروحة 1
+#define FAN_PIN2 11      // رقم PIN للمروحة 2
+#define soilSensorPin 7  // مدخل الإشارة الرقمية من حساس الرطوبة
+#define pumpPin 6        // مخرج تشغيل المضخة
+
+DHT dht(DHTPIN, DHTTYPE);  // تعريف حساس DHT11
+
+void setup() {
+    Serial.begin(9600);       // بدء الاتصال التسلسلي
+    dht.begin();              // بدء قراءة بيانات الحساس
+
+    // تعيين المداخل والمخارج
+    pinMode(SENSOR_PIN, INPUT);    // مستشعر الضوء
+    pinMode(GATE_PIN, OUTPUT);     // ترانزستور الإضاءة
+    pinMode(LED_PIN, OUTPUT);      // LED
+    pinMode(FAN_PIN1, OUTPUT);     // المروحة 1
+    pinMode(FAN_PIN2, OUTPUT);     // المروحة 2
+    pinMode(soilSensorPin, INPUT); // حساس التربة
+    pinMode(pumpPin, OUTPUT);      // المضخة
+
+    // إطفاء جميع الأجهزة في البداية
+    digitalWrite(GATE_PIN, LOW);
+    digitalWrite(LED_PIN, LOW);
+    digitalWrite(FAN_PIN1, LOW);
+    digitalWrite(FAN_PIN2, LOW);
+    digitalWrite(pumpPin, LOW);
+}
+
+void loop() {
+    // قراءة حالة مستشعر الضوء
+    int lightStatus = digitalRead(SENSOR_PIN);
+    Serial.print("حالة الضوء: ");
+    Serial.println(lightStatus);
+
+    if (lightStatus == HIGH) { // في الظلام
+        digitalWrite(GATE_PIN, HIGH);
+        digitalWrite(LED_PIN, HIGH);
+        Serial.println("الظلام -> تشغيل LED");
+    } else { // في الضوء
+        digitalWrite(GATE_PIN, LOW);
+        digitalWrite(LED_PIN, LOW);
+        Serial.println("الضوء -> إطفاء LED");
+    }
+
+    // قراءة درجة الحرارة والرطوبة من DHT11
+    float humidity = dht.readHumidity();
+
+    if (isnan(humidity)) {
+        Serial.println("فشل في قراءة حساس DHT11");
+    } else {
+        Serial.print("الرطوبة: ");
+        Serial.print(humidity);
+        Serial.println("%");
+
+        if (humidity >= 60) { // تشغيل المراوح عند ارتفاع الرطوبة
+            digitalWrite(FAN_PIN1, HIGH);
+            digitalWrite(FAN_PIN2, HIGH);
+            Serial.println("تشغيل المراوح");
+        } else {
+            digitalWrite(FAN_PIN1, LOW);
+            digitalWrite(FAN_PIN2, LOW);
+            Serial.println("إيقاف المراوح");
+        }
+    }
+
+    // قراءة حساس رطوبة التربة
+    int soilState = digitalRead(soilSensorPin);
+    
+    if (soilState == HIGH) { // إذا كانت التربة جافة
+        digitalWrite(pumpPin, HIGH);
+        Serial.println("التربة جافة - تشغيل المضخة");
+    } else { // إذا كانت التربة رطبة
+        digitalWrite(pumpPin, LOW);
+        Serial.println("التربة رطبة - إيقاف المضخة");
+    }
+
+    delay(2000); // انتظار ثانيتين قبل التحديث
+}
