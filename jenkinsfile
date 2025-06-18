@@ -1,0 +1,33 @@
+pipeline {
+    agent { label 'built-in' }
+    stages {
+        stage('Clone') {
+            steps {
+                git branch: 'main', url: 'https://github.com/zscbana/Smart_Green_House'
+            }
+        }
+        stage(' install Python') {
+            steps {
+                sh 'sudo apt-get update'
+                sh 'sudo apt-get install -y python3 python3-pip'
+            }
+        }
+        stage('Set up Virtual env') {
+            steps {
+                sh 'cd webapp'
+                sh 'python3 -m venv venv'
+                sh 'source venv/bin/activate'
+                sh '''
+                    pip3 install --upgrade pip
+                    pip3 install -r requirements.txt
+                '''
+            }
+        }
+        stage('Unit Test') {
+            steps {
+                sh 'source venv/bin/activate'
+                sh 'python manage.py test'
+            }
+        }
+    }
+}
